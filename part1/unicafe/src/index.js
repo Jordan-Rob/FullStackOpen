@@ -20,16 +20,35 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const goodClick = () => {
-    setGood(good + 1)
+  const goodClick = () => setGood(good + 1)
+  
+
+  const neutralClick = () => setNeutral(neutral + 1)
+  
+
+  const badClick = () => setBad(bad + 1) 
+  
+
+  const Total = ({good, neutral, bad}) => {
+    const total = good + neutral + bad
+    return(
+      <p>all {total}</p>
+    )
   }
 
-  const neutralClick = () => {
-    setNeutral(neutral + 1)
+  const Avg = ({good, neutral, bad}) => {
+    const av = (good + neutral + bad)/3
+    return(
+    <p>average {av}</p>
+    )
   }
 
-  const badClick = () => {
-    setBad(bad + 1) 
+  const Percent = ({good, neutral, bad}) => {
+    const total = (good + neutral + bad)
+    const positive = (good / total) * 100
+    return(
+    <p>positive {positive} %</p>
+    )
   }
 
   return (
@@ -43,6 +62,9 @@ const App = () => {
       <Display state={good} text='good' />
       <Display state={neutral} text='neutral' />
       <Display state={bad} text='bad' />
+      <Total good={good} neutral={neutral} bad={bad} />
+      <Avg good={good} neutral={neutral} bad={bad} />
+      <Percent good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
