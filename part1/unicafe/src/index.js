@@ -13,6 +13,28 @@ const Display = ({state, text}) => {
   )
 }
 
+const Total = ({good, neutral, bad}) => {
+  const total = good + neutral + bad
+  return(
+    <p>all {total}</p>
+  )
+}
+
+const Avg = ({good, neutral, bad}) => {
+  const av = (good + neutral + bad)/3
+  return(
+  <p>average {av}</p>
+  )
+}
+
+const Percent = ({good, neutral, bad}) => {
+  const total = (good + neutral + bad)
+  const positive = (good / total) * 100
+  return(
+  <p>positive {positive} %</p>
+  )
+}
+
 
 const App = () => {
   // save clicks of each button to its own state
@@ -29,27 +51,7 @@ const App = () => {
   const badClick = () => setBad(bad + 1) 
   
 
-  const Total = ({good, neutral, bad}) => {
-    const total = good + neutral + bad
-    return(
-      <p>all {total}</p>
-    )
-  }
-
-  const Avg = ({good, neutral, bad}) => {
-    const av = (good + neutral + bad)/3
-    return(
-    <p>average {av}</p>
-    )
-  }
-
-  const Percent = ({good, neutral, bad}) => {
-    const total = (good + neutral + bad)
-    const positive = (good / total) * 100
-    return(
-    <p>positive {positive} %</p>
-    )
-  }
+  
 
   return (
     <div>
