@@ -39,6 +39,14 @@ const Percent = ({good, neutral, bad}) => {
 
 const Statistics = ({good, neutral, bad }) => {
 
+  if (good == neutral == bad == 0){
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Display state={good} text='good' />
@@ -50,6 +58,8 @@ const Statistics = ({good, neutral, bad }) => {
     </div>
   )
 }
+
+
 
 
 const App = () => {
