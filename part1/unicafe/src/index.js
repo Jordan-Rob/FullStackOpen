@@ -7,6 +7,7 @@ const Button = ({handleClick, text}) => {
   )
 }
 
+/*
 const Display = ({value, text}) => { 
   
   return(
@@ -37,6 +38,34 @@ const Percent = ({good, neutral, bad}) => {
   )
 }
 
+*/
+
+const Statistic = ({value, text}) => { 
+
+  if(value.constructor.name === "Array" && text === 'all' ) {
+    const total = value[0] + value[1] + value[2]
+    return(
+      <p>all {total}</p>
+    )
+  }else if(value.constructor.name === "Array" && text === 'average' ) {
+    const av = (value[0] + value[1] + value[2])/3
+    return(
+      <p>average {av}</p>
+    )
+  }else if(value.constructor.name === "Array" && text === 'positive' ) {
+    const total = (value[0] + value[1] + value[2])
+    const positive = (value[0] / total) * 100
+    return(
+      <p>positive {positive} %</p>
+    )
+  }
+  
+  return(
+    <p>{text} {value}</p>
+  )
+}
+
+
 
 const Statistics = ({good, neutral, bad }) => {
 
@@ -48,14 +77,16 @@ const Statistics = ({good, neutral, bad }) => {
     )
   }
 
+  const values = [good, neutral, bad]
+
   return (
     <div>
-      <Display value={good} text='good' /> 
-      <Display value={neutral} text='neutral' /> 
-      <Display value={bad} text='bad' /> 
-      <Total good={good} neutral={neutral} bad={bad} />
-      <Avg good={good} neutral={neutral} bad={bad} />
-      <Percent good={good} neutral={neutral} bad={bad} />
+      <Statistic value={good} text='good' /> 
+      <Statistic value={neutral} text='neutral' /> 
+      <Statistic value={bad} text='bad' /> 
+      <Statistic value={values} text='all' />
+      <Statistic value={values} text='average' />
+      <Statistic value={values} text='positive' />
     </div>
   )
 }
