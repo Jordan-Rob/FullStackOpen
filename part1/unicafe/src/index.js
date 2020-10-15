@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 
 const Button = ({handleClick, text}) => {
   return(
-      <button style={{ float: "Left"}} onClick={handleClick} >{text}</button>
+    <button style={{ float: "Left"}} onClick={handleClick} >{text}</button>
   )
 }
 
-const Display = ({state, text}) => {
+const Display = ({value, text}) => { 
+  
   return(
-  <p>{text} {state}</p>
+    <p>{text} {value}</p>
   )
 }
 
@@ -24,7 +25,7 @@ const Total = ({good, neutral, bad}) => {
 const Avg = ({good, neutral, bad}) => {
   const av = (good + neutral + bad)/3
   return(
-  <p>average {av}</p>
+    <p>average {av}</p>
   )
 }
 
@@ -32,14 +33,14 @@ const Percent = ({good, neutral, bad}) => {
   const total = (good + neutral + bad)
   const positive = (good / total) * 100
   return(
-  <p>positive {positive} %</p>
+    <p>positive {positive} %</p>
   )
 }
 
 
 const Statistics = ({good, neutral, bad }) => {
 
-  if (good == neutral == bad == 0){
+  if ((good + neutral + bad ) === 0){
     return (
       <div>
         <p>No feedback given</p>
@@ -49,9 +50,9 @@ const Statistics = ({good, neutral, bad }) => {
 
   return (
     <div>
-      <Display state={good} text='good' />
-      <Display state={neutral} text='neutral' />
-      <Display state={bad} text='bad' />
+      <Display value={good} text='good' /> 
+      <Display value={neutral} text='neutral' /> 
+      <Display value={bad} text='bad' /> 
       <Total good={good} neutral={neutral} bad={bad} />
       <Avg good={good} neutral={neutral} bad={bad} />
       <Percent good={good} neutral={neutral} bad={bad} />
