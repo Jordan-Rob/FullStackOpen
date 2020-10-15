@@ -45,23 +45,35 @@ const Statistic = ({value, text}) => {
   if(value.constructor.name === "Array" && text === 'all' ) {
     const total = value[0] + value[1] + value[2]
     return(
-      <p>all {total}</p>
+      <tr>
+        <td>{text}</td>
+        <td>{total}</td>
+      </tr>
     )
   }else if(value.constructor.name === "Array" && text === 'average' ) {
     const av = (value[0] + value[1] + value[2])/3
     return(
-      <p>average {av}</p>
+      <tr>
+        <td>{text}</td>
+        <td>{av}</td>
+      </tr>
     )
   }else if(value.constructor.name === "Array" && text === 'positive' ) {
     const total = (value[0] + value[1] + value[2])
     const positive = (value[0] / total) * 100
     return(
-      <p>positive {positive} %</p>
+      <tr>
+        <td>{text}</td>
+        <td>{positive} %</td>
+      </tr>
     )
   }
   
   return(
-    <p>{text} {value}</p>
+      <tr>
+        <td>{text}</td>
+        <td>{value}</td>
+      </tr>
   )
 }
 
@@ -81,12 +93,17 @@ const Statistics = ({good, neutral, bad }) => {
 
   return (
     <div>
-      <Statistic value={good} text='good' /> 
-      <Statistic value={neutral} text='neutral' /> 
-      <Statistic value={bad} text='bad' /> 
-      <Statistic value={values} text='all' />
-      <Statistic value={values} text='average' />
-      <Statistic value={values} text='positive' />
+      <table>
+        <thead></thead>
+        <tbody>
+          <Statistic value={good} text='good' /> 
+          <Statistic value={neutral} text='neutral' /> 
+          <Statistic value={bad} text='bad' /> 
+          <Statistic value={values} text='all' />
+          <Statistic value={values} text='average' />
+          <Statistic value={values} text='positive' />
+        </tbody>
+      </table>
     </div>
   )
 }
