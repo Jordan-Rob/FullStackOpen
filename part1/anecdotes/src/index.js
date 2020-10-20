@@ -20,6 +20,67 @@ const Display = ({state}) => {
   )
 }
 
+const DisplayTop = ({vote0, vote1, vote2, vote3, vote4, vote5, arr}) => {
+  let votes = [ vote0, vote1, vote2, vote3, vote4, vote5 ]
+  var top = Math.max(...votes)
+
+  if(top === vote0){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[0] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }else if(top === vote1){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[1] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }else if(top === vote2){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[2] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }else if(top === vote3){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[3] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }else if(top === vote4){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[4] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }else if(top === vote5){
+    return(
+      <div>
+        <h1>Anecdote With most Votes</h1>
+        <p>{ arr[5] } </p>
+        <p>has {top} votes</p>
+      </div>
+    )
+  }
+  return(
+    <div>
+      <h1>Anecdote With most Votes</h1>
+      
+    </div>
+  )
+}
+
 const App = (props) => {
   const [selected, setSelected] = useState('')
   const [votes, setVotes] = useState({ 0:0 , 1:0, 2:0, 3:0, 4:0, 5:0 })
@@ -77,6 +138,7 @@ const App = (props) => {
       <Display state={votes[0]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )  
   }else if (selected === 'Adding manpower to a late software project makes it later!'){
@@ -86,6 +148,7 @@ const App = (props) => {
       <Display state={votes[1]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )    
   }else if (selected === 'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.'){
@@ -95,6 +158,7 @@ const App = (props) => {
       <Display state={votes[2]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )    
   }else if (selected === 'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.'){
@@ -104,6 +168,7 @@ const App = (props) => {
       <Display state={votes[3]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )    
   }else if (selected === 'Premature optimization is the root of all evil.'){
@@ -113,6 +178,7 @@ const App = (props) => {
       <Display state={votes[4]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )    
   }else if (selected === 'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'){
@@ -122,6 +188,7 @@ const App = (props) => {
       <Display state={votes[5]} />
       <Button handleClick={vote} text='vote' />
       <Button handleClick={randomGen} text='next anecdote' />
+      <DisplayTop vote0={votes[0]} vote1={votes[1]} vote2={votes[2]} vote3={votes[3]} vote4={votes[4]} vote5={votes[5]} arr={arr} />
     </div>
   )    
   }
