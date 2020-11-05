@@ -9,13 +9,22 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
+
+    const existent = persons.find(person => person.name === newName)
+
+    if (existent){
+      window.alert(`${newName} already exists`)
+    }else {
     const newObj = {
       name:newName,
       date: new Date().toISOString(),
       id: persons.length + 1
+      }
+
+      setPersons(persons.concat(newObj))
+      setNewName('')
     }
-    setPersons(persons.concat(newObj))
-    setNewName('')
+    
   }
 
   const inputChange = (event) => {
