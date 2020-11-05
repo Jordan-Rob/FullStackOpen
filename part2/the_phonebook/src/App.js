@@ -44,8 +44,8 @@ const App = () => {
       <div>
         <h2>Phonebook</h2>
         <form onSubmit={addPerson}>
-            name: <input value={newName} onChange={inputChange} />
-            number: <input value={newNum} onChange={numChange} />
+            <div> name: <input value={newName} onChange={inputChange} /> </div>
+            <div> number: <input value={newNum} onChange={numChange} /> </div>
             <button type="submit">add</button>
         </form>
         <h2>Numbers</h2>
