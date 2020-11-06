@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const App = () => {
     const [ persons, setPersons ] = useState([
-      { name: 'Arto Hellas', id:0 },
+      { name: 'Arto Hellas', id:0 , number: '040-123456'},
       { name: 'Ada Lovelace', number: '39-44-5323523' },
       { name: 'Dan Abramov', number: '12-43-234345' },
       { name: 'Mary Poppendieck', number: '39-23-6423122' }
@@ -23,7 +23,7 @@ const App = () => {
       }else {
       const newObj = {
         name:newName,
-        phone:newNum,
+        number:newNum,
         date: new Date().toISOString(),
         id: persons.length + 1
         }
@@ -61,7 +61,7 @@ const App = () => {
             <button type="submit">add</button>
         </form>
         <h2>Numbers</h2>
-        {filtered.map( person => <p key={person.id}> {person.name} - {person.phone} </p> )}
+        {filtered.map( person => <p key={person.id}> {person.name} - {person.number} </p> )}
       </div>
     )
   }
