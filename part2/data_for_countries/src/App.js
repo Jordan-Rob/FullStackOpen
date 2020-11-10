@@ -7,9 +7,6 @@ const App = () => {
 
     const filtered = countries.filter(country => country.name.includes(filters))
 
-    if ( filtered.length > 10 ) {
-
-    }
 
     useEffect( () => {
         console.log('Effect')
