@@ -32,7 +32,20 @@ const App = () => {
       const existent = persons.find(person => person.name === newName)
   
       if (existent){
-        window.alert(`${newName} already exists`)
+        window.confirm(`${newName} is already added to phonebook, replace the 
+        old number with a new one?`)
+
+        const exisPerson = persons.find(person => person.name === newName)
+        const changedPerson = { ...exisPerson, number:newNum}
+
+        personsService
+          .update(exisPerson.id, changedPerson)
+          .then( response => {
+            setPersons(persons.map( person => person.id !== exisPerson.id? person:response.data))
+            setNewName('')
+            setNewNum('')
+          })
+
       }else {
       const newObj = {
         name:newName,
