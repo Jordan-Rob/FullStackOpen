@@ -36,13 +36,16 @@ const App = () => {
       const newObj = {
         name:newName,
         number:newNum,
-        date: new Date().toISOString(),
-        id: persons.length + 1
+        date: new Date(),
         }
-  
-        setPersons(persons.concat(newObj))
-        setNewName('')
-        setNewNum('')
+        
+        axios
+          .post('http://localhost:3001/persons', newObj)
+          .then(response => {
+            setPersons(persons.concat(response.data))
+            setNewName('')
+            setNewNum('')
+          })
       }
       
     }
