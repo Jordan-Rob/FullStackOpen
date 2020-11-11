@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Persons = ({arr}) => {
+const Persons = ({person, delHandler}) => {
     return(
-        arr.map( person => <p key={person.id}> {person.name} - {person.number} </p> )
+        <p>{person.name} -{ person.number }  <button onClick={delHandler} >delete</button></p>
     )
 }
 

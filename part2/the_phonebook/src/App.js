@@ -65,6 +65,18 @@ const App = () => {
       console.log(event.target.value)
       setFilter(event.target.value)
     }
+
+    const delHandler = (id) => {
+      const person = persons.find( person => person.id === id)
+      window.confirm(`Are you sure you want to delete ${person.name}`)
+      personsService
+        .deleteRes(person.id)
+        .then(response => {
+          console.log(response)
+          const newPersons = persons.filter(person => person.id !== id)
+          setPersons(newPersons)
+        })
+    }
   
   
     return (
@@ -77,8 +89,7 @@ const App = () => {
         <PersonForm formFunc={addPerson} val1={newName} handler1={inputChange} val2={newNum} handler2={numChange} />
         
         <h2>Numbers</h2>
-
-        <Persons arr={filtered} />
+        { filtered.map(person => <Persons person={person} delHandler={() => delHandler(person.id)} />) }
 
       </div>
     )
