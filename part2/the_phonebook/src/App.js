@@ -3,6 +3,7 @@ import axios from 'axios';
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
+import personsService from './services/persons';
 
 
 const App = () => {
@@ -14,8 +15,8 @@ const App = () => {
     useEffect( () => {
       console.log('Effect')
 
-      axios
-        .get('http://localhost:3001/persons')
+      personsService
+        .getAll()
         .then( response => {
           console.log('promise fullfilled')
           setPersons(response.data)
@@ -39,8 +40,8 @@ const App = () => {
         date: new Date(),
         }
         
-        axios
-          .post('http://localhost:3001/persons', newObj)
+        personsService
+          .create(newObj)
           .then(response => {
             setPersons(persons.concat(response.data))
             setNewName('')
