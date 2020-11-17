@@ -53,6 +53,17 @@ const App = () => {
             setNewName('')
             setNewNum('')
           })
+          .catch( (error) => {
+            setMessage(
+              `${changedPerson.name} was already deleted `
+              )
+              setTimeout(() => {
+                setMessage(null)
+              }, 5000)
+              setPersons(persons.filter(person => person.id !== exisPerson.id))
+              setNewName('')
+              setNewNum('')
+          })
 
       }else {
       const newObj = {

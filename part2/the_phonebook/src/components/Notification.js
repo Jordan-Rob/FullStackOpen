@@ -6,9 +6,9 @@ const Notification = ({message}) => {
     }
 
     return(
-        <div className='success'>
-            {message}
-        </div>
+        message.includes('deleted')? 
+        <div className='error'>{message}</div>:
+        <div className='success'>{message}</div>
     )
 }
 
