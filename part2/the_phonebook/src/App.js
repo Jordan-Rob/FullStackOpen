@@ -4,6 +4,7 @@ import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
 import personsService from './services/persons';
+import Notification from './components/Notification'
 
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
     const [ newName, setNewName ] = useState('')
     const [ newNum, setNewNum] = useState('')
     const [filters, setFilter] = useState('')
+    const [message, setMessage] = useState('some notification')
 
     useEffect( () => {
       console.log('Effect')
@@ -42,6 +44,12 @@ const App = () => {
           .update(exisPerson.id, changedPerson)
           .then( response => {
             setPersons(persons.map( person => person.id !== exisPerson.id? person:response.data))
+            setMessage(
+              `${changedPerson.name}'s number was updated successfully`
+              )
+              setTimeout(() => {
+                setMessage(null)
+              }, 5000)
             setNewName('')
             setNewNum('')
           })
@@ -57,6 +65,12 @@ const App = () => {
           .create(newObj)
           .then(response => {
             setPersons(persons.concat(response.data))
+            setMessage(
+              `${newObj.name} was added successfully`
+              )
+              setTimeout(() => {
+                setMessage(null)
+              }, 5000)
             setNewName('')
             setNewNum('')
           })
@@ -95,6 +109,7 @@ const App = () => {
     return (
       <div>
         <h2>Phonebook</h2>
+        <Notification message={message} />
         <Filter val={filters} handler={filterChange} />
         
         <h3>Add a new</h3>
